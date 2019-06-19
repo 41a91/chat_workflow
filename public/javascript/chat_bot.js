@@ -8,6 +8,7 @@ window.onload = runBot();
 function runBot() {
     // Get the first question
     runQuestionStatus();
+	
 }
 
 
