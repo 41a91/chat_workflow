@@ -5,7 +5,7 @@ var mysql = require('mysql');
 
 router.get('/',function(req, res, next){
 
-    res.render('index',{title: 'First Init'});
+    res.render('index');
 });
 
 
