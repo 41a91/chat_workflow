@@ -11,7 +11,7 @@ function runBot() {
 }
 
 
-function displayQuestion(chatElement, questionText, optionsDictionary) {
+function displayQuestion(chatElement, questionText, arrayOfAnswers) {
     // Create a div to hold the question
     let questionDiv = document.createElement("div");
     questionDiv.className = "questionDiv";  // For CSS
@@ -30,44 +30,36 @@ function displayQuestion(chatElement, questionText, optionsDictionary) {
     questionDiv.appendChild(questionTextElement);
 
     // Display the given options
-    displayOptions(questionDiv, optionsDictionary);
+    displayOptions(questionDiv, questionText, arrayOfAnswers);
 
     // Scroll to the bottom of the page
     window.scrollTo(0, document.body.scrollHeight);
 }
 
 
-function displayOptions(questionDiv, optionsDictionary) {
-    let optionArray = getOptionArray(optionsDictionary);
+function displayOptions(questionDiv, questionText, arrayOfAnswers) {
+    setAnswersClickFunctionality(questionDiv, questionText, arrayOfAnswers);
+}
 
-    // Add each option to the question div
-    for (let i = 0; i < optionArray.length; i++) {
-        questionDiv.appendChild(optionArray[i]);
+
+function setAnswersClickFunctionality(questionDiv, questionText, arrayOfAnswers) {
+	
+    for (let i = 0; i < arrayOfAnswers.length; i++) 
+	{
+        let answerText = displayChoice(questionText, arrayOfAnswers[i]);
+        questionDiv.appendChild(answerText);
     }
 }
 
 
-function getOptionArray(optionsDictionary) {
-    let array = [];
-
-    // Add each key:value pair as an option in the array
-    for (let key in optionsDictionary) {
-        let func = getMultipleChoiceOption(key, optionsDictionary[key]);
-        array.push(func);
-    }
-
-    return array;
-}
-
-
-function getMultipleChoiceOption(optionText, funcToRun) {
+function displayChoice(questionText, answerText) {
     // Create a <p> to hold the option text
     let displayText = document.createElement("p");
     displayText.className = "questionOption";   // For CSS
-    displayText.innerHTML = optionText;         // Display text
+    displayText.innerHTML = answerText;         // Display text
 
     // Click event listener
-    displayText.onclick = () => runOption(funcToRun);
+    displayText.onclick = () => runOption(questionText, answerText);
 
     return displayText;
 }
@@ -100,14 +92,14 @@ function endClickEvent() {
 }
 
 
-function runOption(funcToRun) {
-    funcToRun();
+function runOption(questionText, answerText) {
+    runQuestionAjax(questionText, answerText);
     endClickEvent();
 }
 
 
-function nextMultipleChoiceQuestion(questionText, optionsDictionary) {
+function nextMultipleChoiceQuestion(questionText, arrayOfAnswers) {
     let chat = document.getElementById("chat");
 
-    displayQuestion(chat, questionText, optionsDictionary);
+    displayQuestion(chat, questionText, arrayOfAnswers);
 }
