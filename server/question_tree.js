@@ -56,7 +56,7 @@ class Node{
 		}
 		
 		get answers(){
-			return answers;
+			return this._answers;
 		}
 	}
 
