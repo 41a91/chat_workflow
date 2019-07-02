@@ -3,16 +3,20 @@
  */
 window.onload = runBot();
 
+// Track the next node
+this.nextNode = null;
 
 
-function runBot() {
-    // Get the first question
-    runQuestionStatus();
-	
+
+function runBot() 
+{
+    // Get the current question
+	loadCurrentNodeAjax();
 }
 
 
-function displayQuestion(chatElement, questionText, optionsDictionary) {
+function displayQuestion(chatElement, questionText, arrayOfAnswers) 
+{
     // Create a div to hold the question
     let questionDiv = document.createElement("div");
     questionDiv.className = "questionDiv";  // For CSS
@@ -31,49 +35,44 @@ function displayQuestion(chatElement, questionText, optionsDictionary) {
     questionDiv.appendChild(questionTextElement);
 
     // Display the given options
-    displayOptions(questionDiv, optionsDictionary);
+    displayOptions(questionDiv, questionText, arrayOfAnswers);
 
     // Scroll to the bottom of the page
     window.scrollTo(0, document.body.scrollHeight);
 }
 
 
-function displayOptions(questionDiv, optionsDictionary) {
-    let optionArray = getOptionArray(optionsDictionary);
+function displayOptions(questionDiv, questionText, arrayOfAnswers) 
+{
+    setAnswersClickFunctionality(questionDiv, questionText, arrayOfAnswers);
+}
 
-    // Add each option to the question div
-    for (let i = 0; i < optionArray.length; i++) {
-        questionDiv.appendChild(optionArray[i]);
+
+function setAnswersClickFunctionality(questionDiv, questionText, arrayOfAnswers) 
+{
+    for (let i = 0; i < arrayOfAnswers.length; i++) 
+	{
+        let answerText = displayChoice(questionText, arrayOfAnswers[i]);
+        questionDiv.appendChild(answerText);
     }
 }
 
 
-function getOptionArray(optionsDictionary) {
-    let array = [];
-
-    // Add each key:value pair as an option in the array
-    for (let key in optionsDictionary) {
-        let func = getMultipleChoiceOption(key, optionsDictionary[key]);
-        array.push(func);
-    }
-
-    return array;
-}
-
-
-function getMultipleChoiceOption(optionText, funcToRun) {
+function displayChoice(questionText, answerText) 
+{
     // Create a <p> to hold the option text
     let displayText = document.createElement("p");
     displayText.className = "questionOption";   // For CSS
-    displayText.innerHTML = optionText;         // Display text
+    displayText.innerHTML = answerText;         // Display text
 
     // Click event listener
-    displayText.onclick = () => runOption(funcToRun);
+    displayText.onclick = () => runOption(answerText);
 
     return displayText;
 }
 
-function getFormTextInputOption(optionText, placeholderText) {
+function getFormTextInputOption(optionText, placeholderText) 
+{
     // Create a <p> to hold the option text
     let input = document.createElement("input");
     input.type = "text";
@@ -86,7 +85,8 @@ function getFormTextInputOption(optionText, placeholderText) {
 }
 
 
-function endClickEvent() {
+function endClickEvent() 
+{
     if (document.getElementById("currentQuestion") != null) {
         let currentDiv = document.getElementById("currentQuestion");
 
@@ -101,14 +101,33 @@ function endClickEvent() {
 }
 
 
-function runOption(funcToRun) {
-    funcToRun();
+function runOption(answerText) 
+{
+	// Display the node with the given answer as its key
+	displayCurrentNode(this.nextNode[answerText]);
     endClickEvent();
 }
 
 
-function nextMultipleChoiceQuestion(questionText, optionsDictionary) {
-    let chat = document.getElementById("chat");
 
-    displayQuestion(chat, questionText, optionsDictionary);
+function nextMultipleChoiceQuestion(questionText, arrayOfAnswers, nextNodelist) 
+{
+    let chat = document.getElementById("chat");
+	
+	this.nextNode = nextNodelist;
+
+    displayQuestion(chat, questionText, arrayOfAnswers);
+}
+
+function displayErrorMessage() 
+{
+    let chat = document.getElementById("chat");
+	
+	// Create a <p> to hold the error text
+    let errorTextElement = document.createElement("p");
+    errorTextElement.className = "errorText";   								// For CSS
+    errorTextElement.innerHTML = "There was an error loading your question";	// Display text
+
+    // Add the div to the chat
+    chat.appendChild(errorTextElement);
 }

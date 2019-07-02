@@ -33,10 +33,18 @@ function setNextButtonFunctionality(dropdown)
 	
 	nextButton.onclick = function()
 	{
-		let selectedOption = dropdown.options[dropdown.selectedIndex];
-		let id = selectedOption.value;
-		let displayName = selectedOption.innerHTML;
+		try
+		{
+			let selectedOption = dropdown.options[dropdown.selectedIndex];
+			let id = selectedOption.value;
+			let displayName = selectedOption.innerHTML;
+			
+			window.location.href = "https://localhost/edit_questions?" + "display_name=" + displayName + "&id=" + id;
+		}
 		
-		window.location.href = "https://localhost/edit_questions?" + "display_name=" + displayName + "&id=" + id;
+		catch (err)
+		{
+			console.log(err);
+		}
 	}
 }

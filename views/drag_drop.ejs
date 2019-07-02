@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Chat Bot</title>
+
+    <!-- CSS -->
+	<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <link href="css/jquery_drag_resize.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
+	
+	<!-- Libraries -->
+		<!-- jQuery -->
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	    crossorigin="anonymous">
+    </script>
+		<!-- jQuery Dragging -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+
+<body>	
+	<section>
+		<span id="container1" class="droppable">
+			<div class="nested_droppable">
+				<span class="nested_draggable">
+					<p>1a</p>
+				</span>
+				<span class="nested_draggable">
+					<p>1b</p>
+				</span>
+				<span class="nested_draggable">
+					<p>1c</p>
+				</span>
+			</div>
+			<div class="draggable">
+				<p>2</p>
+			</div>
+			<div class="draggable">
+				<p>3</p>
+			</div>
+		</span>
+		<span id="container2" class="droppable">
+			<div class="nested_droppable">
+				<span class="nested_draggable">
+					<p>4a</p>
+				</span>
+				<span class="nested_draggable">
+					<p>4b</p>
+				</span>
+				<span class="nested_draggable">
+					<p>4c</p>
+				</span>
+			</div>
+			<div class="draggable">
+				<p>5</p>
+			</div>
+			<div class="draggable">
+				<p>6</p>
+			</div>
+		</span>
+		<span id="container3" class="droppable">
+			<div class="nested_droppable">
+				<span class="nested_draggable">
+					<p>7a</p>
+				</span>
+				<span class="nested_draggable">
+					<p>7b</p>
+				</span>
+				<span class="nested_draggable">
+					<p>7c</p>
+				</span>
+			</div>
+			<div class="draggable">
+				<p>8</p>
+			</div>
+			<div class="draggable">
+				<p>9</p>
+			</div>
+		</span>
+	</section>
+
+	
+	
+    <!-- JS -->
+	<script src="../javascript/jquery/jquery_drag_handler.js"></script>
+</body>
+
+</html>

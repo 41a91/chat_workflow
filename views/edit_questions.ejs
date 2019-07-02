@@ -5,14 +5,19 @@
     <title>Chat Bot</title>
 
     <!-- CSS -->
+	<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <link href="css/jquery_drag_resize.css" rel="stylesheet" />
     <link href="css/default.css" rel="stylesheet" />
 	
 	<!-- Libraries -->
+		<!-- jQuery -->
 	<script
 		src="https://code.jquery.com/jquery-3.4.1.min.js"
 		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	    crossorigin="anonymous">
     </script>
+		<!-- jQuery Dragging -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 
 <body>	
@@ -22,19 +27,19 @@
 		<input type="text" value="<%= display_name %>" readonly></input>
 		<br /><br />
 		
-		<div id="questionsDiv">
+		<div id="questionsDiv" class="droppable">
 			Questions:<br />
 		</div>
 		<br />
 			
-		<input type="submit" value="Submit">
+		<input type="submit" id="submitButton" value="Submit">
 	</form>
 
 	
 	
     <!-- JS -->
-    <script src="../javascript/edit_dropdown.js"></script>
-    <script src="../javascript/edit_questions.js"></script>
+    <script src="../javascript/create_edit_questions/edit_questions.js"></script>
+	<script src="../javascript/jquery/jquery_drag_handler.js"></script>
 </body>
 
 </html>

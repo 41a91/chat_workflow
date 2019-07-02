@@ -1,13 +1,17 @@
 ﻿body {
-    background: #2b2b2b;
-	color: white;
-    height: 100vh;
-    margin: 0;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    background-color: #2b2b2b;
+	color: white;
+    display: flex;
     font-family: Helvetica neue, roboto;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    text-align: center;
+}
+
+span {
+	display: inline-block;
 }
 
 
@@ -24,4 +28,16 @@
 .questionOption:hover {
     color: #7091FF;
     cursor: pointer;
+}
+
+.errorText {
+    color: red;
+}
+
+
+
+/* Edit questions page */
+.linkedQuestion {
+    color: #aaaaaa;
+	font-size: small;
 }
