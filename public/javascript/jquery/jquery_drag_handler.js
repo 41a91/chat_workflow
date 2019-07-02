@@ -7,15 +7,15 @@ $(document).ready(function()
 	// Set sorting for containers nested in the master .droppable containers
 	setSortableElement(".nested_droppable", "ui-sortable-placeholder", false, false);
 
+    
+
+    
+
 	
 
 
 
 	
-
-
-
-
 	/** 
 	 * setSortableElement
 	 * @summary Documentation 						https://api.jqueryui.com/sortable

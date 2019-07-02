@@ -2,16 +2,29 @@
     align-items: center;
     background-color: #2b2b2b;
 	color: white;
-    display: flex;
+    /*display: flex;*/
     font-family: Helvetica neue, roboto;
     height: 100vh;
     justify-content: center;
-    margin: 0;
+    margin: 0 auto;
+	position: relative;
+    text-align: center;
+	vertical-align: middle;
+}
+
+section {
+	margin: auto;
+	height: 100%;
+	width: 100%;
+}
+
+div {
     text-align: center;
 }
 
 span {
 	display: inline-block;
+	margin: auto 10px;
 }
 
 
